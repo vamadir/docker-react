@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t vamadir/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true vamadir/docker-react npm run test
